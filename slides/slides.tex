@@ -112,7 +112,7 @@
             %
             where $\sigma_2, \dots, \sigma_d$ are $d - 1$ permutations of $\{0, 1, \dots, N - 1\}$.
 
-            \item<2-> \texttt{numpy.random.permutation([0, 1, ..., N - 1])}: an permutation of $\{0, 1, \dots, N - 1\}$ (unidimensional array of size $N$) generated uniformly on the (finite) set $\mathfrak{S}(\{0, 1, \dots, N - 1\})$.
+            \item<2-> \texttt{numpy.random.permutation([0, 1, ..., N - 1])}: a permutation of $\{0, 1, \dots, N - 1\}$ (unidimensional array of size $N$) generated uniformly on the (finite) set $\mathfrak{S}(\{0, 1, \dots, N - 1\})$.
 
             \item<3-> Then, we get the coordinates of the `ones' as follows. For all $i_1 = 0, 1, \dots, N - 1$, we get \textbf{the only `$1$' that has coordinate $i_1$ on the first axis}, whose coordinates are
             %
@@ -131,7 +131,7 @@
             where \[
             f(u) = \cos\left(2\pi \left(\frac{1}{d} \sum_{i=1}^{d} u_i - \frac{1}{2}\right)\right)
             \]
-            \item<2-> \textbf{Idea:} Use a stratified sampling scheme based on a regular grid:
+            \item<2-> \textbf{Idea:} Use a stratified sampling scheme based on a regular grid and introduce a random perturbation :
             $$\begin{aligned} \mathfrak{C}_k := &\left\{\left(\frac{2j_1 + 1}{2k}, \dots, \frac{2j_d + 1}{2k}\right) \quad \text{s.t.} \quad (j_1, \dots, j_d) \in \{0, 1, \dots, k - 1\}^d\right\} \\ = &\left\{\frac{1}{2k}, \frac{3}{2k}, \dots, \frac{2k - 1}{2k}\right\}^d \end{aligned}$$
             \item<3-> $d$ is the dimension of the hypercube $[0,1]^d$ and $k$ the level of stratification.
             \item<4-> Grid of size $k^d$.  
@@ -239,7 +239,18 @@
     %%%%% mettre à la fin et inclure un tableau où on compare les estimations et la variance pour différentes valeurs de k, d et N
 
     %%%%%%% limites du modèles
+\begin{frame}{Limits of Haber Estimators}
+    \begin{itemize}
+        \item<1-> \textbf{Curse of dimensionality:} convergence rate \( \mathcal{O}(N^{-1/2 - r/d}) \) degrades with dimension \( d \); slow for high-dimensional problems.
+        
+        
+        \item<2-> \textbf{Regularity assumptions:} optimal rates assume \( f \in \mathcal{C}^r([0,1]^d) \); not suitable for discontinuous or highly oscillatory functions.
 
+        \item<3-> \textbf{No adaptive refinement:} fixed stratification cannot focus sampling effort on regions where \( f \) varies more.
+
+
+    \end{itemize}
+\end{frame}
 
     \section{Implementation of importance sampling methods}
 
